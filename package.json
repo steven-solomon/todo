@@ -1,0 +1,42 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "karma": "^0.12.31"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "coffee-script": "^1.9.1",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-requirejs": "^0.2.2",
+    "karma-safari-launcher": "^0.1.1",
+    "mocha": "^2.2.1",
+    "phantomjs": "^1.9.16",
+    "requirejs": "^2.1.17"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steven-solomon/todo.git"
+  },
+  "author": "Steven Solomon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steven-solomon/todo/issues"
+  },
+  "homepage": "https://github.com/steven-solomon/todo"
+}
