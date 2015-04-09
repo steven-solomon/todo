@@ -1,6 +1,8 @@
 define ->
 	class App
+    constructor: (context) ->
+
 		getAllItems: ->
 			return []
 
-	return new App
+	return App
