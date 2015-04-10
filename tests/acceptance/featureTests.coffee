@@ -1,24 +1,25 @@
-define ['src/app'], (App) ->
-	describe 'Todo Application', ->
-		it 'Should have no items when there are not any', ->
-      context =
-        itemsPresenter: new FakeItemsPresenter
-        itemsGateway: new FakeItemsGateway
+App = window.Todo.App
 
-      app = new App context
-      app.getAllItems()
+describe 'Todo Application', ->
+	it 'Should have no items when there are not any', ->
+    context =
+      itemsPresenter: new FakeItemsPresenter
+      itemsGateway: new FakeItemsGateway
 
-      items = context.itemsPresenter.items
+    app = new App context
+    app.getAllItems()
 
-      expect(items.length).to.be.equal(0)
+    items = context.itemsPresenter.items
 
-    class FakeItemsPresenter
-      display: (items) ->
-        @items = items
+    expect(items.length).to.be.equal(0)
 
-    class FakeItemsGateway
-      getItems: ->
-        return []
+  class FakeItemsPresenter
+    display: (items) =>
+      @items = items
 
-    class ItemsControl
-      constructor: (itemsPresenter, itemsGateway) ->
+  class FakeItemsGateway
+    getAllItems: (success) ->
+      success []
+
+  class ItemsControl
+    constructor: (itemsPresenter, itemsGateway) ->

@@ -1,11 +1,7 @@
 allTestFiles = []
-TEST_REGEXP = /(tests)(\.coffee)?(\.js)?$/i
-pathToModule = (path) ->
-  path.replace(/^\/base\//, "").replace(/\.js$/, "").replace(/\.cofee$/, "")
 
 Object.keys(window.__karma__.files).forEach (file) ->
   # Normalize paths to RequireJS module names.
-  allTestFiles.push pathToModule(file)  if TEST_REGEXP.test(file)
   return
 
 require.config

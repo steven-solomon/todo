@@ -10,14 +10,13 @@ module.exports = (config) ->
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs', 'chai']
+    frameworks: ['mocha', 'chai']
 
 
     # list of files / patterns to load in the browser
     files: [
-      'test-main.coffee'
-      {pattern: 'tests/**/*Tests.coffee', included: false}
-      {pattern: 'src/**/*.coffee', included: false}
+      {pattern: 'src/**/*.coffee', included: true}
+      {pattern: 'tests/**/*Tests.coffee', included: true}
     ]
 
 

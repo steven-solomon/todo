@@ -1,8 +1,12 @@
-define ->
-	class App
-    constructor: (context) ->
+window.Todo = window.Todo || {}
 
-		getAllItems: ->
-			return []
+class App
+  constructor: (context) ->
+    @itemsPresenter = context.itemsPresenter
+    @itemsGateway = context.itemsGateway
 
-	return App
+  getAllItems: =>
+    @itemsGateway.getAllItems (items) =>
+      @itemsPresenter.display items
+
+window.Todo.App = App
