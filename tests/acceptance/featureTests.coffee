@@ -17,8 +17,8 @@ describe 'Todo Application', ->
 
   it 'Should display three items in order', ->
     ITEMS_OUT_OF_ORDER = [{ id: 2, title: 'second task'}
-                      { id: 1, title: 'first task'}
-                      { id: 3, title: 'last task' }]
+                          { id: 1, title: 'first task'}
+                          { id: 3, title: 'last task' }]
 
     ITEMS_IN_ORDER = [{ id: 1, title: 'first task'}
                       { id: 2, title: 'second task'}

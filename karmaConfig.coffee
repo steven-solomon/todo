@@ -10,7 +10,7 @@ module.exports = (config) ->
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai']
+    frameworks: ['mocha', 'sinon-chai']
 
 
     # list of files / patterns to load in the browser
@@ -68,3 +68,10 @@ module.exports = (config) ->
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
     singleRun: true
+
+    plugins: [
+        'karma-mocha'
+        'karma-sinon-chai'
+        'karma-phantomjs-launcher'
+        'karma-coffee-preprocessor'
+    ]
