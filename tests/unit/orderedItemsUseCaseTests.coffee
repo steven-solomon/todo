@@ -1,22 +1,21 @@
 OrderedItemsUseCase = window.Todo.UseCases.OrderedItemsUseCase
 
 describe 'OrderedItemsUseCase', ->
-  it 'Should call display on presenter', ->
+  fakeItemsPresenter = null
+  fakeItemsGateway = null
+  orderedItemsUseCase = null
+
+  beforeEach ->
     fakeItemsPresenter = new FakeItemsPresenter
     fakeItemsGateway = new FakeItemsGateway
     orderedItemsUseCase = new OrderedItemsUseCase fakeItemsPresenter, fakeItemsGateway
 
     orderedItemsUseCase.getAllItems()
 
+  it 'Should call display on presenter', ->
     assert.isTrue fakeItemsPresenter.display.calledOnce
 
   it 'Should call getAllItems on gateway', ->
-    fakeItemsPresenter = new FakeItemsPresenter
-    fakeItemsGateway = new FakeItemsGateway
-    orderedItemsUseCase = new OrderedItemsUseCase fakeItemsPresenter, fakeItemsGateway
-
-    orderedItemsUseCase.getAllItems()
-
     assert.isTrue fakeItemsGateway.getAllItems.calledOnce
 
   class FakeItemsPresenter
