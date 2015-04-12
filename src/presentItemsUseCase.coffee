@@ -2,6 +2,7 @@ window.Todo = window.Todo || {}
 
 class PresentItemsUseCase
   constructor: (@itemsPresenter, @itemsGateway) ->
+    @itemsGateway.addListener()
 
   getAllItems: =>
     @itemsGateway.getAllItems (items) =>

@@ -31,6 +31,11 @@ describe 'PresentItemsUseCase', ->
 
     expect(items).to.deep.equal(ITEMS_IN_ORDER)
 
+  it 'Should register as listener', ->
+    presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
+
+    assert.isTrue itemsGateway.addListener.calledOnce
+
   getDisplayedItemsFromTheUseCase = ->
     presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
     presentItemsUseCase.getAllItems()
@@ -41,6 +46,8 @@ describe 'PresentItemsUseCase', ->
       @items = items
 
   class FakeItemsGateway
+    constructor: ->
+      @addListener = sinon.spy()
     setItems: (@items) ->
     getAllItems: (success) ->
       success @items
