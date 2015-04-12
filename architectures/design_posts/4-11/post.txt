@@ -1,6 +1,6 @@
 I discovered today that the App tests were misnamed. The App was actually the PresentItemsUseCase. I corrected this and remove the duplication that was beginning to build up. I noticed this when I felt like I was writing the same tests again at a different level of abstraction. I also introduced a domain object for a Task.
 
-Spent some time thinking about the next step today; adding an item. This is a very interesting situation because now we have two use cases. There is one to present the current items and one to add them (Single Responsibility Principal at work). But the presentation use case cares about changes to the items. So we will need to introduce a callback here so that any updates to the state of the tasks will automatically notify the presentation that there is something new to be displayed.
-I will most likely use the listener pattern here and the use case will listen for updates on the gateway.
+Spent some time thinking about the next step today, which is to add an item. This is a very interesting situation because now we have two use-cases. There is one to present the current items and one to add them (Single Responsibility Principal at work). However the presentation use-case cares about changes to the items. So we will need to introduce a callback here so that any updates to the state of the tasks will automatically notify the presentation that there is something new to be displayed.
+I will most likely use the listener pattern here and the use-case will listen for updates on the gateway.
 
 The diagrams have been updated to show the next goals.
