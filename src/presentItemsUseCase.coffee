@@ -1,9 +1,7 @@
 window.Todo = window.Todo || {}
 
 class PresentItemsUseCase
-  constructor: (context) ->
-    @itemsPresenter = context.itemsPresenter
-    @itemsGateway = context.itemsGateway
+  constructor: (@itemsPresenter, @itemsGateway) ->
 
   getAllItems: =>
     @itemsGateway.getAllItems (items) =>

@@ -2,17 +2,17 @@ PresentItemsUseCase = window.Todo.PresentItemsUseCase
 Task = window.Todo.Task
 
 describe 'PresentItemsUseCase', ->
-  context = null
+  itemsPresenter = null
+  itemsGateway = null
 
   beforeEach ->
-    context =
-      itemsPresenter: new FakeItemsPresenter
-      itemsGateway: new FakeItemsGateway
+    itemsPresenter = new FakeItemsPresenter
+    itemsGateway = new FakeItemsGateway
 
   it 'Should display no items when there are not any', ->
-    context.itemsGateway.setItems []
+    itemsGateway.setItems []
 
-    items = getItemsFromTheUseCase()
+    items = getDisplayedItemsFromTheUseCase()
 
     expect(items.length).to.be.equal(0)
 
@@ -25,16 +25,16 @@ describe 'PresentItemsUseCase', ->
                       new Task 2, 'second task'
                       new Task 3, 'last task' ]
 
-    context.itemsGateway.setItems ITEMS_OUT_OF_ORDER
+    itemsGateway.setItems ITEMS_OUT_OF_ORDER
 
-    items = getItemsFromTheUseCase()
+    items = getDisplayedItemsFromTheUseCase()
 
     expect(items).to.deep.equal(ITEMS_IN_ORDER)
 
-  getItemsFromTheUseCase = ->
-    presentItemsUseCase = new PresentItemsUseCase context
+  getDisplayedItemsFromTheUseCase = ->
+    presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
     presentItemsUseCase.getAllItems()
-    return context.itemsPresenter.items
+    return itemsPresenter.items
 
   class FakeItemsPresenter
     display: (items) =>
