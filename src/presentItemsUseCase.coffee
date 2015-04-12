@@ -7,8 +7,11 @@ class PresentItemsUseCase
 
   getAllItems: =>
     @itemsGateway.getAllItems (items) =>
-      items.sort (a, b) ->
-        return a.id - b.id
+      sortItemsById items
       @itemsPresenter.display items
+
+  sortItemsById = (items) ->
+    items.sort (a, b) ->
+      return a.id - b.id
 
 window.Todo.PresentItemsUseCase = PresentItemsUseCase
