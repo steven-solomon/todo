@@ -6,13 +6,13 @@ describe 'AddItemsUseCase', ->
   beforeEach ->
     fakeGateway = new FakeGateway
 
-  it 'Should call addItem on gateway', ->
+  it 'Should call addItem with item text on gateway', ->
     ITEM_TEXT = 'item text'
     addItemsUseCase = new AddItemsUseCase fakeGateway
 
     addItemsUseCase.addItem ITEM_TEXT
 
-    assert.isTrue fakeGateway.addItem.calledOnce
+    assert.isTrue fakeGateway.addItem.calledWith(ITEM_TEXT)
 
   class FakeGateway
     addItem: sinon.spy()
