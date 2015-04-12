@@ -1,7 +1,7 @@
 PresentItemsUseCase = window.Todo.PresentItemsUseCase
 Task = window.Todo.Task
 
-describe 'Todo Application', ->
+describe 'PresentItemsUseCase', ->
   context = null
 
   beforeEach ->
