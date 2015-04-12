@@ -1,4 +1,4 @@
-App = window.Todo.App
+PresentItemsUseCase = window.Todo.PresentItemsUseCase
 Task = window.Todo.Task
 
 describe 'Todo Application', ->
@@ -12,7 +12,7 @@ describe 'Todo Application', ->
   it 'Should display no items when there are not any', ->
     context.itemsGateway.setItems []
 
-    items = getItemsFromTheApp()
+    items = getItemsFromTheUseCase()
 
     expect(items.length).to.be.equal(0)
 
@@ -27,13 +27,13 @@ describe 'Todo Application', ->
 
     context.itemsGateway.setItems ITEMS_OUT_OF_ORDER
 
-    items = getItemsFromTheApp()
+    items = getItemsFromTheUseCase()
 
     expect(items).to.deep.equal(ITEMS_IN_ORDER)
 
-  getItemsFromTheApp = ->
-    app = new App context
-    app.getAllItems()
+  getItemsFromTheUseCase = ->
+    presentItemsUseCase = new PresentItemsUseCase context
+    presentItemsUseCase.getAllItems()
     return context.itemsPresenter.items
 
   class FakeItemsPresenter
@@ -44,6 +44,3 @@ describe 'Todo Application', ->
     setItems: (@items) ->
     getAllItems: (success) ->
       success @items
-
-  class ItemsControl
-    constructor: (itemsPresenter, itemsGateway) ->

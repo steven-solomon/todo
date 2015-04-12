@@ -1,6 +1,6 @@
 window.Todo = window.Todo || {}
 
-class App
+class PresentItemsUseCase
   constructor: (context) ->
     @itemsPresenter = context.itemsPresenter
     @itemsGateway = context.itemsGateway
@@ -11,4 +11,4 @@ class App
         return a.id - b.id
       @itemsPresenter.display items
 
-window.Todo.App = App
+window.Todo.PresentItemsUseCase = PresentItemsUseCase
