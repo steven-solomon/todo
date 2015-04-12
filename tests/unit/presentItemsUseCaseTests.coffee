@@ -4,10 +4,12 @@ Task = window.Todo.Task
 describe 'PresentItemsUseCase', ->
   itemsPresenter = null
   itemsGateway = null
+  presentItemsUseCase = null
 
   beforeEach ->
     itemsPresenter = new FakeItemsPresenter
     itemsGateway = new FakeItemsGateway
+    presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
 
   it 'Should display no items when there are not any', ->
     itemsGateway.setItems []
@@ -32,12 +34,9 @@ describe 'PresentItemsUseCase', ->
     expect(items).to.deep.equal(ITEMS_IN_ORDER)
 
   it 'Should register as listener', ->
-    presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
-
     assert.isTrue itemsGateway.addListener.calledOnce
 
   getDisplayedItemsFromTheUseCase = ->
-    presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
     presentItemsUseCase.getAllItems()
     return itemsPresenter.items
 
