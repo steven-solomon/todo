@@ -36,6 +36,11 @@ describe 'PresentItemsUseCase', ->
   it 'Should register as listener', ->
     assert.isTrue itemsGateway.addListener.calledOnce
 
+  it 'Should callback is sent to gateway', ->
+    call = itemsGateway.addListener.getCall(0)
+
+    assert.isFunction call.args[0]
+
   getDisplayedItemsFromTheUseCase = ->
     presentItemsUseCase.getAllItems()
     return itemsPresenter.items
