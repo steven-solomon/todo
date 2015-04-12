@@ -1,10 +1,10 @@
 window.Todo.UseCases = window.Todo.UseCases || {}
 
-class OrderedItemsUseCase
+class PresentItemsUseCase
   constructor: (@itemsPresenter, @itemsGateway) ->
 
   getAllItems: =>
     @itemsPresenter.display()
     @itemsGateway.getAllItems()
 
-window.Todo.UseCases.OrderedItemsUseCase = OrderedItemsUseCase
+window.Todo.UseCases.PresentItemsUseCase = PresentItemsUseCase

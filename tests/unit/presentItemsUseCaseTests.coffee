@@ -1,6 +1,6 @@
-OrderedItemsUseCase = window.Todo.UseCases.OrderedItemsUseCase
+PresentItemsUseCase = window.Todo.UseCases.PresentItemsUseCase
 
-describe 'OrderedItemsUseCase', ->
+describe 'PresentItemsUseCase', ->
   fakeItemsPresenter = null
   fakeItemsGateway = null
   orderedItemsUseCase = null
@@ -8,7 +8,7 @@ describe 'OrderedItemsUseCase', ->
   beforeEach ->
     fakeItemsPresenter = new FakeItemsPresenter
     fakeItemsGateway = new FakeItemsGateway
-    orderedItemsUseCase = new OrderedItemsUseCase fakeItemsPresenter, fakeItemsGateway
+    orderedItemsUseCase = new PresentItemsUseCase fakeItemsPresenter, fakeItemsGateway
 
     orderedItemsUseCase.getAllItems()
 
