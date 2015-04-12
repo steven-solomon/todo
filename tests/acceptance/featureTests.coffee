@@ -1,4 +1,5 @@
 App = window.Todo.App
+Task = window.Todo.Task
 
 describe 'Todo Application', ->
   context = null
@@ -16,13 +17,13 @@ describe 'Todo Application', ->
     expect(items.length).to.be.equal(0)
 
   it 'Should display three items in order', ->
-    ITEMS_OUT_OF_ORDER = [{ id: 2, title: 'second task'}
-                          { id: 1, title: 'first task'}
-                          { id: 3, title: 'last task' }]
+    ITEMS_OUT_OF_ORDER = [new Task 2, 'second task'
+                          new Task 1, 'first task'
+                          new Task 3, 'last task' ]
 
-    ITEMS_IN_ORDER = [{ id: 1, title: 'first task'}
-                      { id: 2, title: 'second task'}
-                      { id: 3, title: 'last task' }]
+    ITEMS_IN_ORDER = [new Task 1, 'first task'
+                      new Task 2, 'second task'
+                      new Task 3, 'last task' ]
 
     context.itemsGateway.setItems ITEMS_OUT_OF_ORDER
 
