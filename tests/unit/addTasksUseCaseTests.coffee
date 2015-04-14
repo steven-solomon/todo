@@ -6,13 +6,13 @@ describe 'AddTasksUseCase', ->
   beforeEach ->
     fakeGateway = new FakeGateway
 
-  it 'Should call addItem with item text on gateway', ->
-    ITEM_TEXT = 'item text'
+  it 'Should call addTask with task text on gateway', ->
+    ITEM_TEXT = 'task text'
     addTasksUseCase = new AddTasksUseCase fakeGateway
 
-    addTasksUseCase.addItem ITEM_TEXT
+    addTasksUseCase.addTask ITEM_TEXT
 
-    assert.isTrue fakeGateway.addItem.calledWith(ITEM_TEXT)
+    assert.isTrue fakeGateway.addTask.calledWith(ITEM_TEXT)
 
   class FakeGateway
-    addItem: sinon.spy()
+    addTask: sinon.spy()

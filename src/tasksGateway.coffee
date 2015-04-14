@@ -4,6 +4,7 @@ class TasksGateway
 
   addListener: (callback) ->
     @listeners.push callback
+
   addTask: ->
     for listener in @listeners
       listener()

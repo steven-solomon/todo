@@ -1,8 +1,8 @@
 class AddTasksUseCase
   constructor: (@tasksGateway) ->
 
-  addItem: (text) ->
-    @tasksGateway.addItem text
+  addTask: (text) ->
+    @tasksGateway.addTask text
 
 window.Todo = window.Todo || {}
 window.Todo.AddTasksUseCase = AddTasksUseCase
