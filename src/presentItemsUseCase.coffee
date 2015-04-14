@@ -1,8 +1,6 @@
-window.Todo = window.Todo || {}
-
 class PresentItemsUseCase
   constructor: (@itemsPresenter, @itemsGateway) ->
-    @itemsGateway.addListener callback
+    @itemsGateway.addListener @getAllItems
 
   getAllItems: =>
     @itemsGateway.getAllItems (items) =>
@@ -13,6 +11,5 @@ class PresentItemsUseCase
     items.sort (a, b) ->
       return a.id - b.id
 
-  callback = ->
-
+window.Todo = window.Todo || {}
 window.Todo.PresentItemsUseCase = PresentItemsUseCase

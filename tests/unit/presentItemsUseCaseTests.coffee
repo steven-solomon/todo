@@ -2,17 +2,17 @@ PresentItemsUseCase = window.Todo.PresentItemsUseCase
 Task = window.Todo.Task
 
 describe 'PresentItemsUseCase', ->
-  itemsPresenter = null
-  itemsGateway = null
+  fakeItemsPresenter = null
+  fakeItemsGateway = null
   presentItemsUseCase = null
 
   beforeEach ->
-    itemsPresenter = new FakeItemsPresenter
-    itemsGateway = new FakeItemsGateway
-    presentItemsUseCase = new PresentItemsUseCase itemsPresenter, itemsGateway
+    fakeItemsPresenter = new FakeItemsPresenter
+    fakeItemsGateway = new FakeItemsGateway
+    presentItemsUseCase = new PresentItemsUseCase fakeItemsPresenter, fakeItemsGateway
 
   it 'Should display no items when there are not any', ->
-    itemsGateway.setItems []
+    fakeItemsGateway.setItems []
 
     items = getDisplayedItemsFromTheUseCase()
 
@@ -27,23 +27,21 @@ describe 'PresentItemsUseCase', ->
                       new Task 2, 'second task'
                       new Task 3, 'last task' ]
 
-    itemsGateway.setItems ITEMS_OUT_OF_ORDER
+    fakeItemsGateway.setItems ITEMS_OUT_OF_ORDER
 
     items = getDisplayedItemsFromTheUseCase()
 
     expect(items).to.deep.equal(ITEMS_IN_ORDER)
 
   it 'Should register as listener', ->
-    assert.isTrue itemsGateway.addListener.calledOnce
+    LISTENERS_LENGTH = 1
+    listeners = fakeItemsGateway.getListeners()
 
-  it 'Should callback is sent to gateway', ->
-    call = itemsGateway.addListener.getCall(0)
-
-    assert.isFunction call.args[0]
+    assert.strictEqual listeners.length, LISTENERS_LENGTH
 
   getDisplayedItemsFromTheUseCase = ->
     presentItemsUseCase.getAllItems()
-    return itemsPresenter.items
+    return fakeItemsPresenter.items
 
   class FakeItemsPresenter
     display: (items) =>
@@ -51,7 +49,11 @@ describe 'PresentItemsUseCase', ->
 
   class FakeItemsGateway
     constructor: ->
-      @addListener = sinon.spy()
+      @listeners = []
     setItems: (@items) ->
     getAllItems: (success) ->
       success @items
+    addListener: (listener) =>
+      @listeners.push listener
+    getListeners: =>
+      return @listeners
