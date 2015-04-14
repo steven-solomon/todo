@@ -1,6 +1,6 @@
-AddItemsUseCase = window.Todo.AddItemsUseCase
+AddTasksUseCase = window.Todo.AddTasksUseCase
 
-describe 'AddItemsUseCase', ->
+describe 'AddTasksUseCase', ->
   fakeGateway = null
 
   beforeEach ->
@@ -8,9 +8,9 @@ describe 'AddItemsUseCase', ->
 
   it 'Should call addItem with item text on gateway', ->
     ITEM_TEXT = 'item text'
-    addItemsUseCase = new AddItemsUseCase fakeGateway
+    addTasksUseCase = new AddTasksUseCase fakeGateway
 
-    addItemsUseCase.addItem ITEM_TEXT
+    addTasksUseCase.addItem ITEM_TEXT
 
     assert.isTrue fakeGateway.addItem.calledWith(ITEM_TEXT)
 
