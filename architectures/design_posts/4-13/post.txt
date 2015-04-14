@@ -1,0 +1,11 @@
+Another day working on this =). First off renamed items to tasks, makes more sense. I also encountered a little bit of trouble with the way I was using functions in the present task use-case. An inline function like
+
+class Foo
+  bar = ->
+    do wibble ...
+
+results in a static function across all instances of the class. We don't want that for any of our use cases so I went to instance methods. This is one of the fuzzy areas with JS as there aren't private methods. (leave that to Douglas Crockford to discuss).
+
+It became evident that sorting shouldn't be a responsibility of the present use-case so it has been removed. I plan to leave that up to the query implementation in tasksGateway.
+
+Implemented the listener pattern in the gateway first. I feel as though providing notifications and persistence will be separated. Probably will diagram that out tomorrow.
