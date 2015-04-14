@@ -57,7 +57,7 @@ module.exports = (config) ->
 
 
     # enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false
+    autoWatch: true
 
 
     # start these browsers
@@ -67,7 +67,7 @@ module.exports = (config) ->
 
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
 
     plugins: [
         'karma-mocha'

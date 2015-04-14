@@ -39,6 +39,15 @@ describe 'PresentItemsUseCase', ->
 
     assert.strictEqual listeners.length, LISTENERS_LENGTH
 
+  it 'Should call display with tasks', ->
+    TASK_LIST = [new Task 1, 'a task']
+
+    listeners = fakeItemsGateway.getListeners()
+    firstListener = listeners[0]
+    firstListener TASK_LIST
+
+    assert.deepEqual fakeItemsPresenter.items, TASK_LIST
+
   getDisplayedItemsFromTheUseCase = ->
     presentItemsUseCase.getAllItems()
     return fakeItemsPresenter.items
