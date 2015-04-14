@@ -18,21 +18,6 @@ describe 'PresentTasksUseCase', ->
 
     expect(tasks.length).to.be.equal(0)
 
-  it 'Should display three tasks in order', ->
-    ITEMS_OUT_OF_ORDER = [new Task 2, 'second task'
-                          new Task 1, 'first task'
-                          new Task 3, 'last task' ]
-
-    ITEMS_IN_ORDER = [new Task 1, 'first task'
-                      new Task 2, 'second task'
-                      new Task 3, 'last task' ]
-
-    fakeTasksGateway.setTasks ITEMS_OUT_OF_ORDER
-
-    tasks = getDisplayedTasksFromTheUseCase()
-
-    expect(tasks).to.deep.equal(ITEMS_IN_ORDER)
-
   it 'Should register as listener', ->
     LISTENERS_LENGTH = 1
     listeners = fakeTasksGateway.getListeners()

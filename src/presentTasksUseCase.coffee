@@ -1,17 +1,11 @@
 class PresentTasksUseCase
   constructor: (@tasksPresenter, @tasksGateway) ->
-    @tasksGateway.addListener @handleEvent
+    @tasksGateway.addListener @handleUpdate
 
   getAllTasks: =>
-    @tasksGateway.getAllTasks (tasks) =>
-      @sortTasksById tasks
-      @tasksPresenter.display tasks
+    @tasksGateway.getAllTasks @handleUpdate
 
-  sortTasksById: (tasks) ->
-    tasks.sort (a, b) ->
-      return a.id - b.id
-
-  handleEvent: (tasks) =>
+  handleUpdate: (tasks) =>
     @tasksPresenter.display tasks
 
 window.Todo = window.Todo || {}
