@@ -28,3 +28,6 @@ node_modules
 
 # Linuxy stuff
 .DS_Store
+
+# UI stuff
+bower_components
