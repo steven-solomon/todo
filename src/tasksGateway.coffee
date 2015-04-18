@@ -1,13 +1,23 @@
 class TasksGateway
   constructor: ->
     @listeners = []
+    @tasks = []
 
   addListener: (callback) ->
     @listeners.push callback
 
-  addTask: ->
+  addTask: (title) =>
+    @_createTask title
+    @_notifyListeners()
+
+  _createTask: (title) =>
+    id = @tasks.length + 1
+    task = new Task id, title
+    @tasks.push task
+
+  _notifyListeners: =>
     for listener in @listeners
-      listener()
+      listener @tasks
 
 window.Todo = window.Todo || {}
 window.Todo.TasksGateway = TasksGateway
