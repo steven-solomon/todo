@@ -39,6 +39,5 @@ describe 'TasksGateway', ->
 
     assert.isTrue callback.calledWith(TASKS)
 
-
   addTask = ->
     tasksGateway.addTask TASK_TITLE
