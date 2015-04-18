@@ -8,11 +8,12 @@ module.exports = (grunt) ->
           join: true
           sourceMap: true
         files:
-          'build/js/app.js': ['src/**/*.coffee']
+          'build/todo/app.js': ['src/**/*.coffee']
     copy:
       main:
         files: [
           {expand: true, flatten: true, src: ['presentationFrameworks/jquery/**'], dest: 'build/jquery/', filter: 'isFile'}
+          {expand: true, flatten: true, src: ['bower_components/jquery/dist/**'], dest: 'build/jquery/', filter: 'isFile'}
         ]
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
