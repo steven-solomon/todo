@@ -6,23 +6,24 @@ describe 'TasksGateway', ->
   beforeEach ->
     tasksGateway = new TasksGateway
 
-  it 'Should invoke callback when task is added', ->
-    callback = sinon.spy()
+  describe '#addListener', ->
+    it 'Should invoke callback when task is added', ->
+      callback = sinon.spy()
 
-    tasksGateway.addListener callback
-    addTask()
+      tasksGateway.addListener callback
+      addTask()
 
-    assert.isTrue callback.calledOnce
+      assert.isTrue callback.calledOnce
 
-  it 'Should invoke callback when task is added', ->
-    firstCallback = ->
-    secondCallback = sinon.spy()
+    it 'Should invoke callback when task is added', ->
+      firstCallback = ->
+      secondCallback = sinon.spy()
 
-    tasksGateway.addListener firstCallback
-    tasksGateway.addListener secondCallback
-    addTask()
+      tasksGateway.addListener firstCallback
+      tasksGateway.addListener secondCallback
+      addTask()
 
-    assert.isTrue secondCallback.calledOnce
+      assert.isTrue secondCallback.calledOnce
 
-  addTask = ->
-    tasksGateway.addTask 'new task'
+    addTask = ->
+      tasksGateway.addTask 'new task'
