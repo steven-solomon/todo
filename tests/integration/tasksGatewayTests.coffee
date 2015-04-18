@@ -2,28 +2,24 @@ TasksGateway = window.Todo.TasksGateway
 
 describe 'TasksGateway', ->
   tasksGateway = null
+  callback = null
 
   beforeEach ->
     tasksGateway = new TasksGateway
+    callback = sinon.spy()
 
-  describe '#addListener', ->
-    it 'Should invoke callback when task is added', ->
-      callback = sinon.spy()
+  it 'Should invoke callback when task is added', ->
+    tasksGateway.addListener callback
+    addTask()
 
-      tasksGateway.addListener callback
-      addTask()
+    assert.isTrue callback.calledOnce
 
-      assert.isTrue callback.calledOnce
+  it 'Should invoke callback when task is added', ->
+    tasksGateway.addListener callback
+    tasksGateway.addListener callback
+    addTask()
 
-    it 'Should invoke callback when task is added', ->
-      firstCallback = ->
-      secondCallback = sinon.spy()
+    assert.isTrue callback.calledTwice
 
-      tasksGateway.addListener firstCallback
-      tasksGateway.addListener secondCallback
-      addTask()
-
-      assert.isTrue secondCallback.calledOnce
-
-    addTask = ->
-      tasksGateway.addTask 'new task'
+  addTask = ->
+    tasksGateway.addTask 'new task'
