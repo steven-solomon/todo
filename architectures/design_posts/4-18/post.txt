@@ -1,0 +1,28 @@
+Today was the day that I was aiming to wire-up the first vertical slice of the app.
+Something really interesting happened. This is the first time the app was interacting with it's collaborators.
+I chose to use jQuery at first. Our code snippet looked like this:
+
+    $(document).ready(function() {
+      PresentTasksUseCase = window.Todo.PresentTasksUseCase;
+      TasksGateway = window.Todo.TasksGateway;
+      tasksGateway = new TasksGateway();
+      presenter = null;
+      presentTasksUseCase = null;
+
+      function Presenter() { }
+      Presenter.prototype.display = function display(tasks) {
+        console.log(tasks);
+      }
+      presenter = new Presenter();
+
+      presentTasksUseCase = new PresentTasksUseCase(presenter, tasksGateway);
+      console.log(presentTasksUseCase);
+      presentTasksUseCase.getAllTasks();
+
+    });
+
+It's important to listen to the design smells here. Look at how much setup we need to do just to get our app going.
+As a client we don't care! We just want to use the Todo app as a ready to go thing. Instead I have to instantiate all the collaborators for the use case and then wire everything together. That's not the client's responsibility!!!!
+
+I hear alot lately about Test Induced Damage. I want to point out that this isn't the root cause of this issue. This design is bad because we simply waited waaaaayyy toooo long for feedback about it. We should have created a client at the earliest possible stage.
+But we are here now and have to rectify this. But imagine for a second if I had implemented all of the use cases and then tried to do this. A client would have to create all of the use case objects and the 'core app' team would have probably moved on to something else and we would be stuck with this bad design for the forsee-able future. Thankfully this is just a side project and I am developing the entire app and I decided to do a vertical slice and not the entire app. Now we can take this feedback and go back to the drawing board with more information.

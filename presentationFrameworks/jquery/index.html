@@ -5,11 +5,28 @@
 </head>
 <body>
   <h1>Todo with jQuery</h1>
+  <div id="todoContainer">
+  </div>
   <script src="/jquery/jquery.min.js"></script>
   <script src="/todo/app.js"></script>
   <script>
     $(document).ready(function() {
-      console.log('Hello World');
+      PresentTasksUseCase = window.Todo.PresentTasksUseCase;
+      TasksGateway = window.Todo.TasksGateway;
+      tasksGateway = new TasksGateway();
+      presenter = null;
+      presentTasksUseCase = null;
+
+      function Presenter() { }
+      Presenter.prototype.display = function display(tasks) {
+        console.log(tasks);
+      }
+      presenter = new Presenter();
+
+      presentTasksUseCase = new PresentTasksUseCase(presenter, tasksGateway);
+      console.log(presentTasksUseCase);
+      presentTasksUseCase.getAllTasks();
+
     });
   </script>
 </body>
