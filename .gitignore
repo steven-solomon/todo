@@ -31,3 +31,6 @@ node_modules
 
 # UI stuff
 bower_components
+
+# App distributions 
+build
