@@ -19,5 +19,5 @@ class TasksGateway
     for listener in @listeners
       listener @tasks
 
-window.Todo = window.Todo || {}
+window.Todo = window.Todo or {}
 window.Todo.TasksGateway = TasksGateway
