@@ -8,5 +8,5 @@ class PresentTasksUseCase
   handleUpdate: (tasks) =>
     @tasksPresenter.display tasks
 
-window.Todo = window.Todo or {}
+window.Todo ?= {}
 window.Todo.PresentTasksUseCase = PresentTasksUseCase

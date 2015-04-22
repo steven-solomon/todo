@@ -1,5 +1,5 @@
 class Task
   constructor: (@id, @title) ->
 
-window.Todo = window.Todo or {}
+window.Todo ?= {}
 window.Todo.Task = Task
